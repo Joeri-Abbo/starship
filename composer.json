@@ -1,0 +1,22 @@
+{
+    "name": "joeri-abbo/starship",
+    "type": "wordpress-plugin",
+    "description": "A package to craft several different models for wordpress",
+    "keywords": ["wp", "wp-plugin", "plugin"],
+    "authors": [
+        {
+            "name":     "Joeri Abbo",
+            "email":    "joeriabbo@hotmail.com",
+            "homepage": "https://nl.linkedin.com/in/joeri-abbo-43a457144",
+            "role":     "Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Starship\\": "src/"
+        },
+        "files": [
+            "helpers.php"
+        ]
+    }
+}
