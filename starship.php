@@ -42,10 +42,10 @@ class Starship
 	public function __construct()
 	{
 		self::init();
-
-		add_action('wp_head', function () {
-			dd(starship_get_post());
-		});
+//
+//		add_action('wp_head', function () {
+//			dd(starship_get_post());
+//		});
 	}
 
 	/**
