@@ -95,7 +95,8 @@ class Model
 			return false;
 		}
 
-		$classes = $this->getTheModels();
+		$classes = apply_filters( STARSHIP_PREFIX . '_classes_models', $this->getTheModels());
+
 		foreach ($classes as $class) {
 			if ($class::CPT === $post->post_type) {
 				return new $class($post);
@@ -131,11 +132,12 @@ class Model
 	 */
 	private function getClasses(string $namespace, array $classes): array
 	{
-		foreach ($classes as &$class) {
-			$class = $namespace . $class;
+		$items = [];
+		foreach ($classes as $class) {
+			$items[strtolower($class)] = $namespace . $class;
 		}
 
-		return $classes;
+		return $items;
 	}
 
 	/**

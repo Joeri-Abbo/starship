@@ -14,7 +14,8 @@
 // File Security Check
 defined('ABSPATH') or die("No script kiddies please!");
 
-const SPACESHIP_TEXT_DOMAIN = 'starship';
+const STARSHIP_TEXT_DOMAIN = 'starship';
+const STARSHIP_PREFIX      = 'starship';
 
 define("STARSHIP_URI", plugin_dir_url(__FILE__));
 define("STARSHIP_PATH", plugin_dir_path(__FILE__));
@@ -42,6 +43,10 @@ class Starship
 	public function __construct()
 	{
 		self::init();
+		new Starship\Helpers\Model();
+		new Starship\Helpers\Collection();
+		new Starship\Helpers\Category();
+
 //
 //		add_action('wp_head', function () {
 //			dd(starship_get_post());
@@ -55,11 +60,8 @@ class Starship
 	 */
 	public static function addTextDomain()
 	{
-		load_plugin_textdomain(SPACESHIP_TEXT_DOMAIN, false, basename(dirname(__FILE__)) . '/languages');
+		load_plugin_textdomain(STARSHIP_TEXT_DOMAIN, false, basename(dirname(__FILE__)) . '/languages');
 	}
 }
 
 new Starship();
-new Starship\Helpers\Model();
-new Starship\Helpers\Collection();
-new Starship\Helpers\Category();

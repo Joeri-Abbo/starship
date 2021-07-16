@@ -50,6 +50,7 @@ class BaseModel
 	 */
 	public static function init()
 	{
+
 	}
 
 	/**
