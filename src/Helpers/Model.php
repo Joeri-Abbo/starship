@@ -19,10 +19,16 @@ class Model
 	public function __construct()
 	{
 		self::init();
-		add_action('the_post', [$this, 'overwriteWPObject']);
+		add_action('the_post', [$this, 'addModelWPObject']);
 	}
 
-	public function overwriteWPObject($object)
+	/**
+	 * Add model object to the global var
+	 * @param $object
+	 *
+	 * @return mixed
+	 */
+	public function addModelWPObject($object)
 	{
 
 		$GLOBALS[STARSHIP_GLOBAL_POST] = $this->getPost($object);
