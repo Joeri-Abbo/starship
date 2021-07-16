@@ -48,6 +48,14 @@ class BaseModel
 	/**
 	 * Init for hooks/filters functions
 	 */
+	protected static function preInit()
+	{
+		self::init();
+	}
+
+	/**
+	 * Init for hooks/filters functions
+	 */
 	public static function init()
 	{
 

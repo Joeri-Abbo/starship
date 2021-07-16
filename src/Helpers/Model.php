@@ -6,12 +6,14 @@ namespace Starship\Helpers;
 
 class Model
 {
+	/**
+	 * Init all the given models. For hooks and filters for example
+	 */
 	public function init()
 	{
 		foreach ($this->getTheModels() as $class) {
-			if (class_exists($class)){
-
-				$class::init();
+			if (class_exists($class)) {
+				$class::preInit();
 			}
 		}
 	}
@@ -101,7 +103,7 @@ class Model
 			return false;
 		}
 
-		$classes = apply_filters( STARSHIP_PREFIX . '_classes_models', $this->getTheModels());
+		$classes = apply_filters(STARSHIP_PREFIX . '_classes_models', $this->getTheModels());
 
 		foreach ($classes as $class) {
 			if ($class::CPT === $post->post_type) {
