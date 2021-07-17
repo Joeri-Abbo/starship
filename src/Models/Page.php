@@ -12,11 +12,4 @@ namespace Starship\Models;
 class Page extends BaseModel
 {
 	public const CPT = 'page';
-
-	public static function init() {
-//		self::addAction('wp_head', function (){
-//			var_dump('test');
-//		});
-	}
-
 }

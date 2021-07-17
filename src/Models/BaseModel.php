@@ -352,9 +352,23 @@ class BaseModel
 	{
 		return get_field($this->getId());
 	}
+
+	/**
+	 * @return bool
+	 */
+	public function registerPostType(): bool
+	{
+		return false;
+	}
+
+	/**
+	 * Get collection of this model if set
+	 * @return false|mixed
+	 */
 	public function getCollection()
 	{
-		$model = new Collection();
-		return $model->getCollection($post);
+		$collection = new Collection();
+
+		return $collection->getCollection($this::CPT);
 	}
 }

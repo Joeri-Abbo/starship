@@ -12,5 +12,4 @@ namespace Starship\Models;
 class Post extends BaseModel
 {
 	public const CPT = 'post';
-
 }

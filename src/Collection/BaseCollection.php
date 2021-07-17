@@ -16,7 +16,7 @@ class BaseCollection
 	 * Set post_type for this model
 	 */
 	public const CPT = 'base_model';
-	public const OPTION_PAGE = 'base_model';
+	public const OPTION_PAGE = 'base_option_page';
 
 	/**
 	 * Get the post_type
@@ -51,9 +51,9 @@ class BaseCollection
 	/**
 	 * Get fields of current post
 	 *
-	 * @return mixed
+	 * @return null|array
 	 */
-	public function getFields()
+	public function getFields(): ?array
 	{
 		return get_field($this::OPTION_PAGE);
 	}

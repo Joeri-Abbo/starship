@@ -13,10 +13,11 @@ class Collection
 		self::init();
 
 		add_action('template_redirect', [$this, 'addCollectionObject']);
-
-
 	}
 
+	/**
+	 * Add collection model
+	 */
 	public function addCollectionObject()
 	{
 		$post_type = get_query_var('post_type');
@@ -26,7 +27,7 @@ class Collection
 		}
 
 		if ( ! $post_type) {
-			return false;
+			return;
 		}
 
 		$GLOBALS[STARSHIP_GLOBAL_COLLECITON] = $this->getCollection($post_type);
@@ -43,6 +44,12 @@ class Collection
 		}
 	}
 
+	/**
+	 * Get the collection by post_type
+	 * @param string $post_type
+	 *
+	 * @return false|mixed
+	 */
 	private function getCollectionByPostType(string $post_type)
 	{
 		if (empty($post_type)) {
@@ -59,7 +66,6 @@ class Collection
 
 		return false;
 	}
-
 
 	/**
 	 * Get the collections

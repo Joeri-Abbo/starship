@@ -61,7 +61,5 @@ class BaseHelper
 		}
 
 		return array_values($items);
-
 	}
-
 }
