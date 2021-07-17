@@ -70,7 +70,7 @@ class BaseModel
 	 * Set singular name for post_type
 	 * @return string
 	 */
-	public static function singularPostTypeName(): string
+	public static function postTypeSingularName(): string
 	{
 		return static::CPT;
 	}
@@ -163,20 +163,20 @@ class BaseModel
 	{
 		$labels = [
 			'name'               => __(sprintf('%s items', static::postTypeName()), STARSHIP_TEXT_DOMAIN),
-			'singular_name'      => __(sprintf('%s item', static::singularPostTypeName()), STARSHIP_TEXT_DOMAIN),
+			'singular_name'      => __(sprintf('%s item', static::postTypeSingularName()), STARSHIP_TEXT_DOMAIN),
 			'add_new'            => __('Nieuwe toevoegen', 'ecs-admin'),
-			'add_new_item'       => __(sprintf('Nieuw %s item toevoegen', static::singularPostTypeName()),
+			'add_new_item'       => __(sprintf('Nieuw %s item toevoegen', static::postTypeSingularName()),
 				STARSHIP_TEXT_DOMAIN),
-			'edit_item'          => __(sprintf('Bewerk %s item', static::singularPostTypeName()), STARSHIP_TEXT_DOMAIN),
-			'new_item'           => __(sprintf('Nieuw %s item', static::singularPostTypeName()), STARSHIP_TEXT_DOMAIN),
-			'view_item'          => __(sprintf('Bekijk %s item', static::singularPostTypeName()), STARSHIP_TEXT_DOMAIN),
-			'view_items'         => __(sprintf('Bekijk %s items', static::singularPostTypeName()),
+			'edit_item'          => __(sprintf('Bewerk %s item', static::postTypeSingularName()), STARSHIP_TEXT_DOMAIN),
+			'new_item'           => __(sprintf('Nieuw %s item', static::postTypeSingularName()), STARSHIP_TEXT_DOMAIN),
+			'view_item'          => __(sprintf('Bekijk %s item', static::postTypeSingularName()), STARSHIP_TEXT_DOMAIN),
+			'view_items'         => __(sprintf('Bekijk %s items', static::postTypeSingularName()),
 				STARSHIP_TEXT_DOMAIN),
-			'search_items'       => __(sprintf('Zoek %s items', static::singularPostTypeName()), STARSHIP_TEXT_DOMAIN),
-			'not_found'          => __(sprintf('Geen %s items gevonden', static::singularPostTypeName()),
+			'search_items'       => __(sprintf('Zoek %s items', static::postTypeSingularName()), STARSHIP_TEXT_DOMAIN),
+			'not_found'          => __(sprintf('Geen %s items gevonden', static::postTypeSingularName()),
 				STARSHIP_TEXT_DOMAIN),
 			'not_found_in_trash' => __(sprintf('Geen %s items gevonden in prullenbak',
-				static::singularPostTypeName()), STARSHIP_TEXT_DOMAIN),
+				static::postTypeSingularName()), STARSHIP_TEXT_DOMAIN),
 		];
 
 		$options = [
