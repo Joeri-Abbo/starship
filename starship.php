@@ -17,6 +17,7 @@ defined('ABSPATH') or die("No script kiddies please!");
 const STARSHIP_TEXT_DOMAIN = 'starship';
 const STARSHIP_PREFIX      = 'starship';
 
+define("STARSHIP_VERSION", 'v1.0.0');
 define("STARSHIP_URI", plugin_dir_url(__FILE__));
 define("STARSHIP_PATH", plugin_dir_path(__FILE__));
 
@@ -52,6 +53,14 @@ class Starship
 //		add_action('wp_footer', function () {
 //			dd(starship_get_post()->getCollection()->getUrl());
 //		});
+//
+		add_action('admin_init', function () {
+			add_filter('admin_footer_text', function ($content) {
+				return __('Thanks for using Starship 🚀', STARSHIP_TEXT_DOMAIN) . ' ' . STARSHIP_VERSION;
+			}, 11);
+		});
+
+
 	}
 
 	/**
