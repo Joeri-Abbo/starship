@@ -123,64 +123,10 @@ class Model
 		if (empty($models)) {
 			return false;
 		}
-		$models = $this->unsetValueOfArray('index.php', $models);
-		$models = $this->stripPartOfArrayValue('.php', $models);
+		$models = BaseHelper::unsetValueOfArray('index.php', $models);
+		$models = BaseHelper::stripPartOfArrayValue('.php', $models);
 
-		return $this->getClasses('Starship\Models\\', $models);
-	}
-
-	/**
-	 * Generate the classes
-	 *
-	 * @param string $namespace
-	 * @param array $classes
-	 *
-	 * @return array
-	 */
-	private function getClasses(string $namespace, array $classes): array
-	{
-		$items = [];
-		foreach ($classes as $class) {
-			$items[strtolower($class)] = $namespace . $class;
-		}
-
-		return $items;
-	}
-
-	/**
-	 * Unset item by value
-	 *
-	 * @param string $value
-	 * @param array $items
-	 *
-	 * @return array
-	 */
-	private function unsetValueOfArray(string $value, array $items): array
-	{
-		if (($key = array_search($value, $items)) !== false) {
-			unset($items[$key]);
-		}
-
-		return $items;
-	}
-
-	/**
-	 * Strip part of value in array
-	 *
-	 * @param string $value
-	 * @param array $items
-	 *
-	 * @return array
-	 */
-	private function stripPartOfArrayValue(string $value, array $items): array
-	{
-		foreach ($items as &$item) {
-			$item = str_replace($value, '', $item);
-
-		}
-
-		return array_values($items);
-
+		return BaseHelper::getClasses('Starship\Models\\', $models);
 	}
 
 }
