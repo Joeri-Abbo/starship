@@ -20,7 +20,8 @@ const STARSHIP_PREFIX      = 'starship';
 define("STARSHIP_URI", plugin_dir_url(__FILE__));
 define("STARSHIP_PATH", plugin_dir_path(__FILE__));
 
-define("STARSHIP_GLOBAL_POST", STARSHIP_PREFIX . '_model');
+define("STARSHIP_GLOBAL_MODEL", STARSHIP_PREFIX . '_model');
+define("STARSHIP_GLOBAL_COLLECITON", STARSHIP_PREFIX . '_collection');
 
 require_once STARSHIP_PATH . 'vendor/autoload.php';
 

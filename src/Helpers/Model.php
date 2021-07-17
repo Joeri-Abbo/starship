@@ -21,7 +21,7 @@ class Model
 	public function __construct()
 	{
 		self::init();
-		add_action('the_post', [$this, 'addModelWPObject']);
+		add_action('the_post', [$this, 'addModelObject']);
 	}
 
 	/**
@@ -30,14 +30,13 @@ class Model
 	 *
 	 * @return mixed
 	 */
-	public function addModelWPObject($object)
+	public function addModelObject($object)
 	{
 
-		$GLOBALS[STARSHIP_GLOBAL_POST] = $this->getPost($object);
+		$GLOBALS[STARSHIP_GLOBAL_MODEL] = $this->getPost($object);
 
 		return $object;
 	}
-
 
 	/**
 	 * Get the starship model
@@ -78,7 +77,7 @@ class Model
 	 */
 	public function getThePost()
 	{
-		return $GLOBALS[STARSHIP_GLOBAL_POST] ?? false;
+		return $GLOBALS[STARSHIP_GLOBAL_MODEL] ?? false;
 	}
 
 	/**
