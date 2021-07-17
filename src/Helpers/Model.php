@@ -100,7 +100,7 @@ class Model
 			return false;
 		}
 
-		$classes = apply_filters(STARSHIP_PREFIX . '_classes_models', $this->getTheModels());
+		$classes = $this->getTheModels();
 
 		foreach ($classes as $class) {
 			if ($class::CPT === $post->post_type) {
@@ -124,7 +124,10 @@ class Model
 		$models = BaseHelper::unsetValueOfArray('index.php', $models);
 		$models = BaseHelper::stripPartOfArrayValue('.php', $models);
 
-		return BaseHelper::getClasses('Starship\Models\\', $models);
+
+		$classes = BaseHelper::getClasses('Starship\Models\\', $models);
+
+		return apply_filters(STARSHIP_PREFIX . '_classes_models', $classes);
 	}
 
 }
