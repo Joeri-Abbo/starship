@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Plugin Name: Starship 🚀
  * Description: Add models to wordpress elements
@@ -11,6 +10,7 @@
  *
  * Version: 1.0.0
  */
+
 // File Security Check
 defined('ABSPATH') or die("No script kiddies please!");
 
@@ -48,9 +48,9 @@ class Starship
 		new Starship\Helpers\Collection();
 		new Starship\Helpers\Category();
 
-//
+
 //		add_action('wp_footer', function () {
-//			dd(starship_get_collection()->getUrl());
+//			dd(starship_get_post()->getCollection()->getUrl());
 //		});
 	}
 
