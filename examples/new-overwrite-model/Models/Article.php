@@ -16,7 +16,7 @@ class Article extends BaseModel
 	public const CPT = 'article';
 
 	/** @inheritDoc */
-	public function registerPostType(): bool
+	public static function registerPostType(): bool
 	{
 		return true;
 	}

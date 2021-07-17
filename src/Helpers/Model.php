@@ -9,11 +9,13 @@ class Model
 	 */
 	public function init()
 	{
-		foreach ($this->getTheModels() as $class) {
-			if (class_exists($class)) {
-				$class::preInit();
+		add_action('after_setup_theme', function () {
+			foreach ($this->getTheModels() as $class) {
+				if (class_exists($class)) {
+					$class::preInit();
+				}
 			}
-		}
+		});
 	}
 
 	public function __construct()

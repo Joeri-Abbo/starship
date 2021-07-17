@@ -52,7 +52,10 @@ class BaseModel
 	 */
 	public static function preInit()
 	{
-		self::init();
+		if (static::registerPostType()) {
+			static::registerThePostType();
+		}
+		static::init();
 	}
 
 	/**
@@ -60,6 +63,140 @@ class BaseModel
 	 */
 	public static function init()
 	{
+
+	}
+
+	/**
+	 * Set singular name for post_type
+	 * @return string
+	 */
+	public static function singularPostTypeName(): string
+	{
+		return static::CPT;
+	}
+
+	/**
+	 * Set name for post_type
+	 * @return string
+	 */
+	public static function postTypeName(): string
+	{
+		return static::CPT;
+	}
+
+	/**
+	 * Set rewrite slug for post_type
+	 * @return string
+	 */
+	public static function postTypeRewriteSlug(): string
+	{
+		return static::CPT;
+	}
+
+	/**
+	 * Set dashicon name for post_type
+	 * @return string
+	 */
+	public static function postTypeMenuIcon(): string
+	{
+		return 'dashicons-dashboard';
+	}
+
+	/**
+	 * Set support for post_type
+	 * @return array
+	 */
+	public static function postTypeSupports(): array
+	{
+		return ['title', 'editor', 'excerpt'];
+	}
+
+	/**
+	 * Toggle ui
+	 * @return bool
+	 */
+	public static function postTypeShowUi(): bool
+	{
+		return true;
+	}
+
+	/**
+	 * Set archive
+	 * @return bool
+	 */
+	public static function postTypeHasArchive(): bool
+	{
+		return true;
+	}
+
+	/**
+	 * Make post_type hierarchical
+	 * @return bool
+	 */
+	public static function postTypeHierarchical(): bool
+	{
+		return false;
+	}
+
+	/**
+	 * Set post_type public state
+	 * @return bool
+	 */
+	public static function postTypePublic(): bool
+	{
+		return false;
+	}
+
+	/**
+	 * Add rewrite settings
+	 * @return array
+	 */
+	public static function postTypeRewrite(): array
+	{
+		return ['slug' => static::postTypeRewriteSlug(), 'with_front' => true];
+	}
+
+	/**
+	 * Register post_type
+	 */
+	public static function registerThePostType()
+	{
+		$labels = [
+			'name'               => __(sprintf('%s items', static::postTypeName()), STARSHIP_TEXT_DOMAIN),
+			'singular_name'      => __(sprintf('%s item', static::singularPostTypeName()), STARSHIP_TEXT_DOMAIN),
+			'add_new'            => __('Nieuwe toevoegen', 'ecs-admin'),
+			'add_new_item'       => __(sprintf('Nieuw %s item toevoegen', static::singularPostTypeName()),
+				STARSHIP_TEXT_DOMAIN),
+			'edit_item'          => __(sprintf('Bewerk %s item', static::singularPostTypeName()), STARSHIP_TEXT_DOMAIN),
+			'new_item'           => __(sprintf('Nieuw %s item', static::singularPostTypeName()), STARSHIP_TEXT_DOMAIN),
+			'view_item'          => __(sprintf('Bekijk %s item', static::singularPostTypeName()), STARSHIP_TEXT_DOMAIN),
+			'view_items'         => __(sprintf('Bekijk %s items', static::singularPostTypeName()),
+				STARSHIP_TEXT_DOMAIN),
+			'search_items'       => __(sprintf('Zoek %s items', static::singularPostTypeName()), STARSHIP_TEXT_DOMAIN),
+			'not_found'          => __(sprintf('Geen %s items gevonden', static::singularPostTypeName()),
+				STARSHIP_TEXT_DOMAIN),
+			'not_found_in_trash' => __(sprintf('Geen %s items gevonden in prullenbak',
+				static::singularPostTypeName()), STARSHIP_TEXT_DOMAIN),
+		];
+
+		$options = [
+			'public'       => static::postTypePublic(),
+			'hierarchical' => static::postTypeHierarchical(),
+			'has_archive'  => static::postTypeHasArchive(),
+			'rewrite'      => static::postTypeRewrite(),
+			'show_ui'      => static::postTypeShowUi(),
+			'supports'     => static::postTypeSupports(),
+			'menu_icon'    => static::postTypeMenuIcon(),
+		];
+
+		$options = apply_filters(STARSHIP_PREFIX . '_post_type_' . static::CPT . '_options', $options);
+		$labels  = apply_filters(STARSHIP_PREFIX . '_post_type_' . static::CPT . '_labels', $labels);
+
+		$options['labels'] = $labels;
+		register_post_type(
+			static::CPT,
+			$options
+		);
 
 	}
 
@@ -356,7 +493,7 @@ class BaseModel
 	/**
 	 * @return bool
 	 */
-	public function registerPostType(): bool
+	public static function registerPostType(): bool
 	{
 		return false;
 	}
