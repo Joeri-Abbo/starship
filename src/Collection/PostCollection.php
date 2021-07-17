@@ -15,8 +15,7 @@ class PostCollection extends BaseCollection
 	/**
 	 * Set post_type for this model
 	 */
-	public const CPT = 'base_model';
+	public const CPT = 'post';
 	public const OPTION_PAGE = 'base_model';
-
 
 }

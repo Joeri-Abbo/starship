@@ -2,6 +2,8 @@
 
 namespace Starship\Models;
 
+use Starship\Helpers\Collection;
+
 /**
  *
  * Create the base model.
@@ -48,7 +50,7 @@ class BaseModel
 	/**
 	 * Init for hooks/filters functions
 	 */
-	protected static function preInit()
+	public static function preInit()
 	{
 		self::init();
 	}
@@ -349,5 +351,10 @@ class BaseModel
 	public function getFields()
 	{
 		return get_field($this->getId());
+	}
+	public function getCollection()
+	{
+		$model = new Collection();
+		return $model->getCollection($post);
 	}
 }

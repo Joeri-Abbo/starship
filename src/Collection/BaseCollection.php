@@ -19,6 +19,24 @@ class BaseCollection
 	public const OPTION_PAGE = 'base_model';
 
 	/**
+	 * Get the post_type
+	 * @return string
+	 */
+	public function getType(): string
+	{
+		return $this::CPT;
+	}
+
+	/**
+	 * Get the post_type
+	 * @return string
+	 */
+	public function getPostType(): string
+	{
+		return $this->getType();
+	}
+
+	/**
 	 * Get field of current post
 	 *
 	 * @param $selector
@@ -27,7 +45,7 @@ class BaseCollection
 	 */
 	public function getField($selector)
 	{
-		return get_field($selector, self::OPTION_PAGE);
+		return get_field($selector, $this::OPTION_PAGE);
 	}
 
 	/**
@@ -37,6 +55,15 @@ class BaseCollection
 	 */
 	public function getFields()
 	{
-		return get_field(self::OPTION_PAGE);
+		return get_field($this::OPTION_PAGE);
+	}
+
+	/**
+	 * get the archive url
+	 * @return mixed
+	 */
+	public function getUrl(): string
+	{
+		return get_post_type_archive_link($this::CPT);
 	}
 }

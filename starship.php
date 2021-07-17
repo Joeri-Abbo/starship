@@ -49,8 +49,8 @@ class Starship
 		new Starship\Helpers\Category();
 
 //
-//		add_action('wp_head', function () {
-//			dd(starship_get_post());
+//		add_action('wp_footer', function () {
+//			dd(starship_get_collection()->getUrl());
 //		});
 	}
 
