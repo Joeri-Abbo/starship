@@ -20,4 +20,28 @@ class Article extends BaseModel
 	{
 		return true;
 	}
+
+	/** @inheritDoc */
+	public static function postTypeMenuIcon(): string
+	{
+		return 'dashicons-format-aside';
+	}
+
+	/** @inheritDoc */
+	public static function postTypeRewriteSlug(): string
+	{
+		return 'nieuws';
+	}
+
+	/** @inheritDoc */
+	public static function postTypeName(): string
+	{
+		return 'Nieuwsberichten';
+	}
+
+	/** @inheritDoc */
+	public static function postTypeSingularName(): string
+	{
+		return 'Nieuwsbericht';
+	}
 }
