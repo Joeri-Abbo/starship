@@ -481,6 +481,19 @@ class BaseModel
 	}
 
 	/**
+	 * Set value for field of current post
+	 *
+	 * @param string $selector
+	 * @param $value mixed
+	 *
+	 * @return mixed
+	 */
+	public function updateField(string $selector, $value)
+	{
+		return update_field($selector, $value, $this->getId());
+	}
+
+	/**
 	 * Get fields of current post
 	 *
 	 * @return mixed
