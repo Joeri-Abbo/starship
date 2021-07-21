@@ -23,6 +23,7 @@ define("STARSHIP_PATH", plugin_dir_path(__FILE__));
 
 define("STARSHIP_GLOBAL_MODEL", STARSHIP_PREFIX . '_model');
 define("STARSHIP_GLOBAL_COLLECITON", STARSHIP_PREFIX . '_collection');
+define("STARSHIP_GLOBAL_TAXONOMY", STARSHIP_PREFIX . '_taxonomy');
 
 require_once STARSHIP_PATH . 'vendor/autoload.php';
 
@@ -47,13 +48,8 @@ class Starship
 		self::init();
 		new Starship\Helpers\Model();
 		new Starship\Helpers\Collection();
-		new Starship\Helpers\Category();
+		new Starship\Helpers\Taxonomy();
 
-
-//		add_action('wp_footer', function () {
-//			dd(starship_get_post()->getCollection()->getUrl());
-//		});
-//
 		add_action('admin_init', function () {
 			add_filter('admin_footer_text', function ($content) {
 				return __('Thanks for using Starship 🚀', STARSHIP_TEXT_DOMAIN) . ' ' . STARSHIP_VERSION;

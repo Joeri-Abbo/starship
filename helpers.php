@@ -29,6 +29,31 @@ function starship_get_posts(array $posts)
 }
 
 /**
+ * Get the starship taxonomy
+ * @return false|mixed
+ */
+function starship_get_term($term = null)
+{
+	$taxonomy = new Starship\Helpers\Taxonomy;
+
+	return $taxonomy->getTaxonomy($term);
+}
+
+/**
+ * Get taxonomies models
+ *
+ * @param array $terms
+ *
+ * @return mixed
+ */
+function starship_get_terms(array $terms)
+{
+	$taxonomy = new Starship\Helpers\Taxonomy;
+
+	return $taxonomy->getTaxonomies($terms);
+}
+
+/**
  * Get the starship collection
  * @return false|mixed
  */
