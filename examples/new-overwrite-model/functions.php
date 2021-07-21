@@ -7,3 +7,9 @@ add_filter(STARSHIP_PREFIX . '_classes_models', function ($classes) {
 	$classes['article'] = 'Name\space\Path\Here\Models\Article';
 	return $classes;
 });
+
+add_filter(STARSHIP_PREFIX . '_classes_taxonomies', function ($classes) {
+	$classes['article'] = 'Name\space\Path\Here\Taxonomies\ArticleType';
+
+	return $classes;
+});
