@@ -33,6 +33,24 @@ class BaseCategory
 	}
 
 	/**
+	 * Return term id
+	 * @return int
+	 */
+	public function getId(): int
+	{
+		return $this->getTerm()->term_id;
+	}
+
+	/**
+	 * Return term id
+	 * @return int
+	 */
+	public function getTermId(): int
+	{
+		return $this->getId();
+	}
+
+	/**
 	 * Get term
 	 * @return \WP_Term
 	 */
@@ -187,4 +205,29 @@ class BaseCategory
 	{
 		return get_fields($this->getTerm());
 	}
+
+	/**
+	 * Function over the default update_term_meta to make it easier to update data.
+	 *
+	 * @param string $key
+	 * @param $value
+	 */
+	protected function updateTermMetaValue(string $key, $value): void
+	{
+		update_term_meta($this->getId(), $key, $value);
+	}
+
+	/**
+	 * Function over the default get_term_meta to make it easier to update data.
+	 *
+	 * @param string $key
+	 * @param bool $single
+	 *
+	 * @return mixed
+	 */
+	protected function getTermMetaValue(string $key, $single = true)
+	{
+		return get_term_meta($this->getId(), $key, $single);
+	}
+
 }
