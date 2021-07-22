@@ -207,6 +207,15 @@ class BaseCategory
 	}
 
 	/**
+	 * Get the term url
+	 * @return string
+	 */
+	public function getUrl(): string
+	{
+		return get_term_link($this->getTerm());
+	}
+
+	/**
 	 * Function over the default update_term_meta to make it easier to update data.
 	 *
 	 * @param string $key
