@@ -49,12 +49,19 @@ class Starship
 		new Starship\Helpers\Model();
 		new Starship\Helpers\Collection();
 		new Starship\Helpers\Taxonomy();
+		new Starship\Helpers\ACF\FlexContent();
 
 		add_action('admin_init', function () {
 			add_filter('admin_footer_text', function ($content) {
 				return __('Thanks for using Starship 🚀', STARSHIP_TEXT_DOMAIN) . ' ' . STARSHIP_VERSION;
 			}, 11);
 		});
+
+//
+//		add_action('wp_head', function () {
+//			$layouts = starship_get_flex_content(get_queried_object_id(), 'layout');
+//			dd($layouts);
+//		});
 
 
 	}

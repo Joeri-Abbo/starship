@@ -63,3 +63,18 @@ function starship_get_collection($post_type = null)
 
 	return $collection->getCollection($post_type);
 }
+
+/**
+ * Get the flex content
+ *
+ * @param int $post_id
+ * @param string $field
+ *
+ * @return array|false
+ */
+function starship_get_flex_content(int $post_id, string $field)
+{
+	$flexContent = new Starship\Helpers\ACF\FlexContent;
+
+	return $flexContent->getTheFlexContent($post_id, $field);
+}

@@ -13,3 +13,11 @@ add_filter(STARSHIP_PREFIX . '_classes_taxonomies', function ($classes) {
 
 	return $classes;
 });
+
+
+add_filter(STARSHIP_PREFIX . '_classes_acf_layouts', function ($classes) {
+
+	$classes['title_text'] = 'Elephant\Corporate\ACF\Layouts\TitleTextLayout';
+
+	return $classes;
+});
